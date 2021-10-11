@@ -1,0 +1,51 @@
+<div style="background-color: #FEFEFE;padding: 5%;margin-bottom: 5%;">
+  <div>
+    <h1>Package Details</h1>
+  </div>
+  <div style="box-sizing: border-box;">
+    <h2>{{parcel.Name}}</h2>
+    <img [src]="parcel.ImageURL" style="width: 100%;" alt="">
+    <h1> Description </h1>
+    <p>{{parcel.Description}}</p>
+
+
+    <div class="bottom-container">
+
+      <div>
+        <h2>Parcel Origin</h2>
+        <p>{{parcel.Origin}}</p>
+        
+      </div>
+      <div>
+        <h2>Parcel Destination</h2>
+        <p>{{parcel.Origin}}</p>
+        
+      </div>
+    </div>
+
+    <div class="parcel-details-others">
+
+      <h2>Parcel Weight</h2>
+      <p>{{parcel.Weight}}</p>
+      
+
+    </div>
+    <div class="parcel-details-others">
+
+      <h2>Parcel Receiver</h2>
+      <p>{{parcel.Receiver}}</p>
+      
+
+    </div>
+    <div class="parcel-details-others">
+
+      <h2>Total Cost</h2>
+      <p>${{parcel.StorageCharge}}</p>
+      
+
+    </div>
+
+
+  </div>
+  <button class="clickable" matButton (click)="returnHome()">Done</button>
+</div>

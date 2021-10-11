@@ -1,0 +1,16 @@
+<div>
+  <div>
+
+    <h1 class="dashboard-headings">My Packages</h1>
+
+  </div><mat-card  *ngFor='let parcel of parcelsObservable |async' class="dashboard-container">
+    <div>
+        <h1> {{parcel.Name}} </h1>
+      <img [src]="parcel.ImageURL" alt="">
+      <h4> Description </h4>
+      <p>{{parcel.Description.substring(0, 100)}}...</p>
+      <button class="clickable" matButton (click)="packageDetails(parcel)">Details</button>
+    </div>
+    <!-- <button class="clickable" matButton (click)="packageDetailsAdd()">Details</button> -->
+</mat-card>
+</div>
