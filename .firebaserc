@@ -2,7 +2,7 @@
   "targets": {
     "test-6bea2": {
       "hosting": {
-        "PrototypPizza": [
+        "Comminus": [
           "test-6bea2"
         ]
       }

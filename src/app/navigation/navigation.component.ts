@@ -7,10 +7,13 @@ import { AuthService } from '../auth/services/auth.service';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+ 
 
-  constructor(public authService:AuthService) { }
+  constructor(public authService:AuthService) {
+   }
 
   ngOnInit(): void {
+    
   }
 
 }

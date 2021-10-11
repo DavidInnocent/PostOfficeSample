@@ -9,19 +9,16 @@ import { User } from 'src/app/shared/models/user';
   providedIn: 'root'
 })
 export class AuthService {
-  userData: any;
   constructor(
-    public afs: AngularFirestore,   // Inject Firestore service
-    public afAuth: AngularFireAuth, // Inject Firebase auth service
+    public afs: AngularFirestore,   
+    public afAuth: AngularFireAuth, 
     public router: Router,  
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone 
   ) {    
-    /* Saving user data in localstorage when 
-    logged in and setting up null when logged out */
+   
     this.afAuth.authState.subscribe(user => {
       if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
+        localStorage.setItem('user', JSON.stringify(user));
         JSON.parse(localStorage.getItem('user')!);
       } else {
         localStorage.setItem('user', '{}');
@@ -31,14 +28,15 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return (user === '{}') ? false : true;
+    const user = localStorage.getItem('user');
+    return (user==='{}') ? false : true;
   }
   
   SignIn(email:string, password:string) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
+          
           this.router.navigate(['dashboard']);
         });
         this.SetUserData(result.user);
@@ -68,14 +66,16 @@ export class AuthService {
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }
+    localStorage.setItem('user', JSON.stringify(user));
     return userRef.set(userData, {
       merge: true
     })
   }
 
   SignOut() {
+    localStorage.removeItem('user');
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      
       this.router.navigate(['log_in']);
     })
   }

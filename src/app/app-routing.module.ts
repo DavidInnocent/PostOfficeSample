@@ -13,10 +13,10 @@ const routes: Routes = [
   { path: 'sign_up', component: SignUpComponent },
   { path: 'log_in', component: LoginComponent },
 
-  { path: 'parcel_details', component: ParcelDetailsComponent, canActivate: [ParcelGuard] },
+  { path: 'parcel_details', component: ParcelDetailsComponent, canActivate: [ParcelGuard,AuthGuard] },
 
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'error', component: ErrorComponent }
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
